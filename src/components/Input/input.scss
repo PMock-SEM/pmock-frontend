@@ -1,13 +1,14 @@
 .input-box{
-  font-family: Baskerville, Arial, Helvetica, sans-serif;
-  width: 80%;
+  font-family: Lato;
 }
 
 .input-box input{
-  font-family: Baskerville, Arial, Helvetica, sans-serif;
+  font-family: Lato;
   border-radius: 5px;
-  height: 30px;
+  height: 40px;
   background-color: aliceblue;
   border: none;
   font-size: 16px;
+  width: 100%;
+  padding: 5px;
 }

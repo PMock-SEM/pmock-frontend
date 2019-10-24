@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { register } from '../../actions/userAction';
 
 class Register extends Component {
   render() {
@@ -8,4 +10,6 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapDispatchToProps = { register };
+
+export default connect(null, mapDispatchToProps)(Register);
