@@ -5,6 +5,7 @@ import UserProfile from '../../containers/UserProfile/UserProfile';
 import Login from '../Login/Login.jsx';
 import Register from '../Register/Register.jsx';
 import Video from '../../components/Video/Video.jsx';
+import UploadVideo from '../UploadVideo/UploadVideo.jsx';
 
 function App() {
   return (
@@ -12,10 +13,11 @@ function App() {
       <div className="App">
         <Header></Header>
         <div>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/video" component={Video} />
-          <Route exact path="/users" component={UserProfile}></Route>
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/register' component={Register} />
+          <Route exact path='/video' component={Video} />
+          <Route exact path='/users' component={UserProfile} />
+          <Route exact path='/upload_video' component={UploadVideo} />
         </div>
       </div>
     </Router>

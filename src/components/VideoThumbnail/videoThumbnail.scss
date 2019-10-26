@@ -1,0 +1,43 @@
+.video-thumbnail{
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  height: 200px;
+  padding: 5px;
+  font-family: Lato;
+}
+
+.video-img{
+  width: 270px;
+  height: 200px;
+  background-color: #c9c9c9;
+}
+
+.video-description{
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.video-title{
+  font-weight: bold;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000000;
+}
+
+.video-title:hover{
+  color: cornflowerblue;
+}
+
+.video-uploader{
+
+}
+
+.video-upload-time{
+
+}
+

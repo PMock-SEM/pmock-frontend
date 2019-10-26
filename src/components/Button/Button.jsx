@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './button.scss';
+import { withRouter } from 'react-router'
 
 class Button extends Component {
   constructor(props) {

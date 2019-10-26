@@ -1,0 +1,48 @@
+.register{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.register-popup{
+  display: flex;
+  flex-direction: row;
+  width: 650px;
+  height: 550px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px #c9c9c9;
+}
+
+.register-left{
+  background-color: #2193b0;
+  width: 35%;
+  height: 100%;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.register-right{
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  width: 65%;
+}
+
+.register-title{
+  font-family: Lato;
+  font-weight: bold;
+  font-size: 34px;
+  margin-bottom: 15px;
+}
+
+Input {
+  margin-top: 15px;
+}
+
+.btn{
+  margin-top: 20px;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
