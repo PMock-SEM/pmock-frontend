@@ -36,7 +36,8 @@ export function logout() {
 
 export function register(userData) {
   return (dispatch, state) => {
-    axios.post(`${config.api}/users`, { data: userData })
+    debugger;
+    axios.post(`${config.api}/users`, { ...userData })
       .then(response => {
         //browserHistory.push('/login');
       });

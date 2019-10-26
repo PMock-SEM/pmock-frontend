@@ -22,27 +22,58 @@ class Register extends Component {
   }
 
   onFirstNameChange = (e) => {
+    this.setState({
+      user: {
+        ...this.state.user,
+        firstName: e.target.value
+      }
+    });
 
   }
 
   onLastNameChange = (e) => {
+    this.setState({
+      user: {
+        ...this.state.user,
+        lastName: e.target.value
+      }
+    });
 
   }
 
   onEmailChange = (e) => {
+    this.setState({
+      user: {
+        ...this.state.user,
+        email: e.target.value
+      }
+    });
 
   }
 
   onPasswordChange = (e) => {
+    this.setState({
+      user: {
+        ...this.state.user,
+        password: e.target.value
+      }
+    });
 
   }
 
   onConfirmPasswordChange = (e) => {
+    this.setState({
+      user: {
+        ...this.state.user,
+        confirmPassword: e.target.value
+      }
+    });
 
   }
 
   onRegisterClick = (e) => {
     e.preventDefault();
+    this.props.register(this.state.user);
   }
 
   validateRegisterInput = () => {

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import UserProfile from '../../containers/UserProfile/UserProfile';
 import Login from '../Login/Login.jsx';
 import Register from '../Register/Register.jsx';
-import Video from '../../components/Video/Video.jsx';
+import Video from '../Video/Video.jsx';
 import UploadVideo from '../UploadVideo/UploadVideo.jsx';
 
 function App() {
