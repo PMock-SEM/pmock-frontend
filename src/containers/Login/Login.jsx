@@ -27,7 +27,7 @@ class Login extends Component {
 
   onLinkedinClick = (e) => {
     window.localStorage.preventHref = window.location.href;
-    window.location.href = `${config.oauth_uri}?response_type=code&client_id=${config.client_id}&redirect_uri=${config.redirect_uri}&state=fooobar&scope=r_liteprofile%20r_emailaddress%20w_member_social`;
+    window.location.href = `/users/auth/linkedin`;
   }
 
   onLoginClick = (e) => {
@@ -66,7 +66,7 @@ class Login extends Component {
             <Input placeholder='Password' type='password' onInputChange={this.onPasswordChange} />
             <p className='forget-password'>Forgot your password?</p>
             <Button className='login-btn' text='Login' onButtonClick={this.onLoginClick} />
-            {/* <img src='https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png' alt='aaa' onClick={this.onLinkedinClick}></img> */}
+            <img src='https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png' alt='aaa' onClick={this.onLinkedinClick}></img>
             {/* <div>
               <a href='/video'>Upload a video</a>
             </div> */}

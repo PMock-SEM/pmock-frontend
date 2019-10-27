@@ -2,7 +2,7 @@ import axios from 'axios';
 import config from '../config';
 import setAuthorizationToken from '../auth/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
-
+import userActionTypes from '../actionTypes/userActionTypes';
 
 export function login(userData) {
   return dispatch => {
@@ -42,6 +42,17 @@ export function register(userData) {
         //browserHistory.push('/login');
       });
   }
-
 }
+
+ export const fetchUser = () => {
+    return function(dispatch) {
+    axios
+      .get('/users/api/current_user')
+      .then(res => dispatch({ type: userActionTypes.FETCH_USER, payload:res.data }));
+
+    
+    };
+  };
+
+
 
