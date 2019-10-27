@@ -6,6 +6,7 @@ import Login from '../Login/Login.jsx';
 import Register from '../Register/Register.jsx';
 import Video from '../Video/Video.jsx';
 import UploadVideo from '../UploadVideo/UploadVideo.jsx';
+import VideoDetail from '../VideoDetail/VideoDetail';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path='/video' component={Video} />
           <Route exact path='/users' component={UserProfile} />
           <Route exact path='/upload_video' component={UploadVideo} />
+          <Route exact path='/video_detail' component={VideoDetail} />
         </div>
       </div>
     </Router>
