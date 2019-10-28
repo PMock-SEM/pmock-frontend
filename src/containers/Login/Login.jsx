@@ -65,8 +65,12 @@ class Login extends Component {
             <Input placeholder="Email" onInputChange={this.onEmailChange} />
             <Input placeholder='Password' type='password' onInputChange={this.onPasswordChange} />
             <p className='forget-password'>Forgot your password?</p>
+
+            <div style={{display: 'inline'}}> 
+
             <Button className='login-btn' text='Login' onButtonClick={this.onLoginClick} />
-            <img src='https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png' alt='aaa' onClick={this.onLinkedinClick}></img>
+            <img src='https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png' alt='aaa' style={{width: 200, height: 50, top: this.props.top, left: this.props.left, display: 'inline'}} onClick={this.onLinkedinClick}></img>
+           </div>
             {/* <div>
               <a href='/video'>Upload a video</a>
             </div> */}
@@ -79,7 +83,6 @@ class Login extends Component {
 
 const mapStateToProps = (state) => {
   return {
-
   }
 };
 

@@ -38,7 +38,7 @@ class UploadVideo extends Component {
           <Input placeholder="Title" onInputChange={this.onTitleChange}></Input>
         </div>
         <div className='upload-viewer'>
-          <Dropzone onDrop={this.onDrop}>
+          <Dropzone onDrop={this.onDrop} >
             {({ getRootProps, getInputProps }) => (
               <div className='upload-inner' {...getRootProps()}>
                 <input {...getInputProps()} />

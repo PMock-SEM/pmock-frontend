@@ -6,6 +6,8 @@ import Login from '../Login/Login.jsx';
 import Register from '../Register/Register.jsx';
 import Video from '../Video/Video.jsx';
 import UploadVideo from '../UploadVideo/UploadVideo.jsx';
+import Homepage from '../Homepage/Homepage.jsx';
+
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
@@ -21,6 +23,7 @@ class App extends Component {
       <div className="App">
         <Header></Header>
         <div>
+          <Route exact path='/' component={Homepage} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
           <Route exact path='/video' component={Video} />
