@@ -13,74 +13,33 @@ class UserProfile extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth) {
+      this.setState({
+        firstName: nextProps.auth.firstName,
+        lastName: nextProps.auth.lastName,
+        email: nextProps.auth.email,
+        avatarLink: nextProps.auth.avatarLink
+      });
+    }
+  }
+
   onUploadClick = (e) => {
     e.preventDefault();
     this.props.history.push('/upload_video');
   }
-
-renderFirstName() {
-  switch (this.props.auth) {
-    case null:
-      return;
-
-    case false:
-      return 'Fetching..';
-
-    default:
-      return this.props.auth.firstName;
-  }
-}
-
-renderLastName() {
-  switch (this.props.auth) {
-    case null:
-      return;
-
-    case false:
-      return 'Fetching..';
-
-    default:
-      return this.props.auth.lastName;
-  }
-}
-
-renderEmail() {
-  switch (this.props.auth) {
-    case null:
-      return;
-
-    case false:
-      return 'Fetching..';
-
-    default:
-      return this.props.auth.email;
-  }
-}
-
-renderAvatar() {
-  switch (this.props.auth) {
-    case null:
-      return;
-
-    case false:
-      return 'Fetching..';
-
-    default:
-      return this.props.auth.avatarLink;
-  }
-}
 
   render() {
     return (
       <div className='user-profile'>
         <div className='user-info'>
           <div className='user-avatar'>
-            <img src={this.renderAvatar()} style={{width: 75, height: 75, position: 'absolute', top: this.props.top, left: this.props.left}}></img>
+            <img src={this.state.avatarLink} style={{ width: 75, height: 75, position: 'absolute', top: this.props.top, left: this.props.left }}></img>
           </div>
           <div className='user-right'>
-            <div className='user-name'>{this.renderFirstName()}</div>
-            <div className='user-description'>{this.renderLastName()}</div>
-            <div className='user-description'>{this.renderEmail()}</div>
+            <div className='user-name'>{this.state.firstName}</div>
+            <div className='user-description'>{this.state.lastName}</div>
+            <div className='user-description'>{this.state.email}</div>
           </div>
         </div>
         <div className='user-main'>
@@ -109,7 +68,7 @@ renderAvatar() {
 }
 
 
-function mapStateToProps({auth}) {
+function mapStateToProps({ auth }) {
   return { auth };
 }
-export default connect(mapStateToProps,null)(UserProfile);
+export default connect(mapStateToProps, null)(UserProfile);
