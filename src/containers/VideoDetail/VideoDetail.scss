@@ -1,0 +1,17 @@
+.side {
+  //display: flex;
+  flex: 30%;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.video-detail {
+  display: flex;
+  flex-direction: row;
+}
+
+.main {
+  //display: flex;
+  flex: 70%;
+  flex-direction: column;
+}
