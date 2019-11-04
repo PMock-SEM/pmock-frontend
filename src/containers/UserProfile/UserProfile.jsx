@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './user_profile.scss';
 import Button from '../../components/Button/Button';
 import VideoThumbnail from '../../components/VideoThumbnail/VideoThumbnail';
+import { connect } from 'react-redux';
 
 class UserProfile extends Component {
   constructor(props) {
@@ -9,7 +10,18 @@ class UserProfile extends Component {
 
     this.state = {
 
-    };
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth) {
+      this.setState({
+        firstName: nextProps.auth.firstName,
+        lastName: nextProps.auth.lastName,
+        email: nextProps.auth.email,
+        avatarLink: nextProps.auth.avatarLink
+      });
+    }
   }
 
   onUploadClick = (e) => {
@@ -21,11 +33,13 @@ class UserProfile extends Component {
     return (
       <div className='user-profile'>
         <div className='user-info'>
-          <div className='user-avatar'></div>
+          <div className='user-avatar'>
+            <img src={this.state.avatarLink} style={{ width: 75, height: 75, position: 'absolute', top: this.props.top, left: this.props.left }}></img>
+          </div>
           <div className='user-right'>
-            <div className='user-name'>Firstname Lastname</div>
-            <div className='user-description'>This is description</div>
-            <div className='user-description'>This is a another description</div>
+            <div className='user-name'>{this.state.firstName}</div>
+            <div className='user-description'>{this.state.lastName}</div>
+            <div className='user-description'>{this.state.email}</div>
           </div>
         </div>
         <div className='user-main'>
@@ -53,4 +67,8 @@ class UserProfile extends Component {
   }
 }
 
-export default UserProfile;
+
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+export default connect(mapStateToProps, null)(UserProfile);

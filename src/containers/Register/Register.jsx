@@ -61,6 +61,11 @@ class Register extends Component {
 
   }
 
+  onLinkedinClick = (e) => {
+    window.localStorage.preventHref = window.location.href;
+    window.location.href = `/users/auth/linkedin`;
+  }
+  
   onConfirmPasswordChange = (e) => {
     this.setState({
       user: {
@@ -93,7 +98,12 @@ class Register extends Component {
             <Input placeholder="Email" onInputChange={this.onEmailChange} />
             <Input placeholder='Password' type='password' onInputChange={this.onPasswordChange} />
             <Input placeholder='Confirm your password' type='password' onInputChange={this.onConfirmPasswordChange} />
-            <Button className='register-btn' text='Register' onButtonClick={this.onRegisterClick} />
+
+            <div style={{display: 'inline'}}> 
+              <Button className='register-btn' text='Register' onButtonClick={this.onRegisterClick} />
+              <img src='https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png' alt='aaa' style={{width: 200, height: 50, top: this.props.top, left: this.props.left, display: 'inline'}} onClick={this.onLinkedinClick}></img>
+            </div>
+
           </div>
         </div>
       </div>

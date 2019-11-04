@@ -9,25 +9,44 @@ class UploadVideo extends Component {
     super(props);
 
     this.state = {
+      video: {
+        title: '',
+        file: null
+      }
+
     };
   }
 
   onDrop = acceptedFiles => {
-    const reader = new FileReader()
-    reader.onabort = () => console.log('file reading was aborted')
-    reader.onerror = () => console.log('file reading has failed')
+    console.log(acceptedFiles);
+    const reader = new FileReader();
     reader.onload = () => {
-      const binaryStr = reader.result
-      console.log(binaryStr)
+      const binaryStr = reader.result;
+      console.log(binaryStr);
     }
-    acceptedFiles.forEach(file => reader.readAsArrayBuffer(file))
+    acceptedFiles.forEach(file => {
+      reader.readAsArrayBuffer(file);
+      this.setState({
+        video: {
+          ...this.state.video,
+          file: file
+        }
+      });
+    })
   };
 
-  onTitleChange = e => {
-
+  onTitleChange = (e) => {
+    this.setState({
+      video: {
+        ...this.state.video,
+        title: e.target.value
+      }
+    });
   };
 
-  onSubmitClick = e => {
+  onSubmitClick = (e) => {
+    e.preventDefault();
+    debugger;
 
   };
 
@@ -38,7 +57,7 @@ class UploadVideo extends Component {
           <Input placeholder="Title" onInputChange={this.onTitleChange}></Input>
         </div>
         <div className='upload-viewer'>
-          <Dropzone onDrop={this.onDrop}>
+          <Dropzone onDrop={this.onDrop} >
             {({ getRootProps, getInputProps }) => (
               <div className='upload-inner' {...getRootProps()}>
                 <input {...getInputProps()} />
