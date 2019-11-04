@@ -76,14 +76,6 @@ class VideoDetail extends Component {
                                     videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
                     <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video'
                                     videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
-                    <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video'
-                                    videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
-                    <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video'
-                                    videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
-                    <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video'
-                                    videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
-                    <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video'
-                                    videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
                 </div>
             </div>
         );
