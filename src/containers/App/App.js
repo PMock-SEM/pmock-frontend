@@ -18,24 +18,24 @@ class App extends Component {
     this.props.fetchUser();
   }
 
-  render () {
-  return (
-    <Router>
-      <div className="App">
-        <Header></Header>
-        <div>
-          <Route exact path='/' component={Homepage} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/register' component={Register} />
-          <Route exact path='/video' component={Video} />
-          <Route exact path='/users' component={UserProfile} />
-          <Route exact path='/upload_video' component={UploadVideo} />
-          <Route exact path='/video_detail' component={VideoDetail} />
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Header></Header>
+          <div>
+            <Route exact path='/' component={Homepage} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/register' component={Register} />
+            <Route exact path='/video' component={Video} />
+            <Route exact path='/users/:id' component={UserProfile} />
+            <Route exact path='/upload_video' component={UploadVideo} />
+            <Route exact path='/video_detail' component={VideoDetail} />
+          </div>
         </div>
-      </div>
-    </Router>
-  );
-}
+      </Router>
+    );
+  }
 };
 
 export default connect(null, actions)(App);

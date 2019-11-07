@@ -46,8 +46,6 @@ class UploadVideo extends Component {
 
   onSubmitClick = (e) => {
     e.preventDefault();
-    debugger;
-
   };
 
   render() {

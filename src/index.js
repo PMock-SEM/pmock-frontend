@@ -6,17 +6,6 @@ import './index.css';
 import App from './containers/App/App';
 import * as serviceWorker from './serviceWorker';
 
-const checkAuth = (store) => {
-  return (nextState, replace) => {
-    const { isAuthenticated } = store.getState().userReducer;
-    if (!isAuthenticated) {
-      replace({
-        pathname: '/login'
-      });
-    };
-  }
-}
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
