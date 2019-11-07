@@ -7,9 +7,11 @@ export default class CommentForm extends Component {
             loading: false,
             error: "",
 
-            comment: {
-                name: "",
-                message: ""
+            feedback: {
+                coachId: "",
+                videoId: "",
+                content: "",
+                createdAt: ""
             }
         };
 
@@ -26,8 +28,8 @@ export default class CommentForm extends Component {
 
         this.setState({
             ...this.state,
-            comment: {
-                ...this.state.comment,
+            feedback: {
+                ...this.state.feedback,
                 [name]: value
             }
         });
@@ -49,10 +51,11 @@ export default class CommentForm extends Component {
         this.setState({ error: "", loading: true });
 
         // persist the comments on server
-        let { comment } = this.state;
-        fetch("http://localhost:7777", {
+        let { feedback } = this.state.feedback;
+
+        fetch("http://localhost:3000/feedbacks", {
             method: "post",
-            body: JSON.stringify(comment)
+            body: JSON.stringify(feedback)
         })
             .then(res => res.json())
             .then(res => {
@@ -60,13 +63,13 @@ export default class CommentForm extends Component {
                     this.setState({ loading: false, error: res.error });
                 } else {
                     // add time return from api and push comment to parent state
-                    comment.time = res.time;
-                    this.props.addComment(comment);
+                    feedback.createdAt = res.time;
+                    this.props.addComment(feedback);
 
                     // clear the message box
                     this.setState({
                         loading: false,
-                        comment: { ...comment, message: "" }
+                        feedback: { ...feedback, content: "" }
                     });
                 }
             })
@@ -82,7 +85,7 @@ export default class CommentForm extends Component {
      * Simple validation
      */
     isFormValid() {
-        return this.state.comment.name !== "" && this.state.comment.message !== "";
+        return  this.state.feedback.content !== "";
     }
 
     renderError() {
@@ -96,25 +99,14 @@ export default class CommentForm extends Component {
             <React.Fragment>
                 <form method="post" onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <input
+                        <textarea
                             onChange={this.handleFieldChange}
-                            value={this.state.comment.name}
+                            value={this.state.feedback.content}
                             className="form-control"
-                            placeholder="Your Name"
-                            name="name"
-                            type="text"
+                            placeholder="Your Comment"
+                            name="content"
+                            rows="5"
                         />
-                    </div>
-
-                    <div className="form-group">
-            <textarea
-                onChange={this.handleFieldChange}
-                value={this.state.comment.message}
-                className="form-control"
-                placeholder="Your Comment"
-                name="message"
-                rows="5"
-            />
                     </div>
 
                     {this.renderError()}

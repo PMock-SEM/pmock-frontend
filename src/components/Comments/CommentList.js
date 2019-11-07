@@ -15,8 +15,8 @@ export default function CommentList(props) {
                 </div>
             ) : null}
 
-            {props.comments.map((comment, index) => (
-                <Comment key={index} comment={comment} />
+            {props.comments.map((feedback, index) => (
+                <Comment key={index} comment={feedback} />
             ))}
         </div>
     );
