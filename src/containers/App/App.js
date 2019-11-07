@@ -11,6 +11,7 @@ import VideoDetail from '../VideoDetail/VideoDetail';
 
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import CoachProfile from '../CoachProfile/CoachProfile.jsx';
 
 class App extends Component {
 
@@ -29,6 +30,7 @@ class App extends Component {
             <Route exact path='/register' component={Register} />
             <Route exact path='/video' component={Video} />
             <Route exact path='/users/:id' component={UserProfile} />
+            <Route exact path='/coaches/:id' component={CoachProfile} />
             <Route exact path='/upload_video' component={UploadVideo} />
             <Route exact path='/video_detail' component={VideoDetail} />
           </div>
