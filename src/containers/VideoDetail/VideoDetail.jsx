@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import config from '../config';
+import config from '../../config';
 import './VideoDetail.scss';
 import {Video} from '../../components/Video/Video';
 import CommentList from "../../components/Comments/CommentList";
@@ -13,18 +13,18 @@ class VideoDetail extends Component {
         this.state = {
             comments: [],
             loading: false,
+            video: {},
             videoId: ''
         };
         this.addComment = this.addComment.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.auth) {
-            this.setState({
-                videoId: nextProps.videoId,
-                videoUrl: nextProps.videoUrl
-            });
-        }
+    componentWillMount() {
+        const id = this.props.match.params.id;
+        this.setState({videoId: id});
+        fetch(`${config.api}/videos/${id}`).then(res => {
+            this.setState({video: res.data });
+        });
     }
 
     componentDidMount() {
@@ -61,7 +61,7 @@ class VideoDetail extends Component {
                 <div className="main">
                     <div style={{maxWidth: '80%'}}>
                         <Video
-                            videoUrl={this.state.videoUrl}/>
+                            videoUrl={this.state.video.videoUrl}/>
                     </div>
                     <div className="row">
                         <div className="col-4 pt-3 border-right">

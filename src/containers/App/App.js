@@ -30,7 +30,7 @@ class App extends Component {
           <Route exact path='/video' component={Video} />
           <Route exact path='/users' component={UserProfile} />
           <Route exact path='/upload_video' component={UploadVideo} />
-          <Route exact path='/video_detail' component={VideoDetail} />
+          <Route exact path='/video_detail/:id' component={VideoDetail} />
         </div>
       </div>
     </Router>
