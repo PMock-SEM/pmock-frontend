@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 
 class Video extends Component {
   constructor(props) {
@@ -11,7 +11,6 @@ class Video extends Component {
   }
 
   handleSubmit(event) {
-    debugger;
   }
 
   render() {
@@ -23,4 +22,12 @@ class Video extends Component {
   }
 }
 
-export default Video;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth
+  };
+};
+
+const mapDispatchToProps = null;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Video);

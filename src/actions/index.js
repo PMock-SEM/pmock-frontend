@@ -1,2 +1,3 @@
 export * from './userAction';
-export * from './videoAction';
+export * from './videoListAction';
+export * from './userProfileAction';
