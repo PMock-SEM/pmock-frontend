@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header.jsx';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import UserProfile from '../../containers/UserProfile/UserProfile';
 import Login from '../Login/Login.jsx';
 import Register from '../Register/Register.jsx';

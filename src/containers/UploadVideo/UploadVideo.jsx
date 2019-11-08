@@ -1,4 +1,4 @@
-import React, { Component, useCallback } from 'react';
+import React, { Component } from 'react';
 import './uploadVideo.scss';
 import Dropzone from 'react-dropzone';
 import Input from '../../components/Input/Input';

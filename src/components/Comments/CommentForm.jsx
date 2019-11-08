@@ -1,42 +1,30 @@
 import React, { Component } from "react";
+import './commentForm.scss';
 
 class CommentForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: "",
-
+      error: '',
       comment: {
-        name: "",
-        message: ""
+        message: ''
       }
     };
 
-    // bind context to methods
     this.handleFieldChange = this.handleFieldChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  /**
-   * Handle form input field changes & update the state
-   */
   handleFieldChange = event => {
-    const { value, name } = event.target;
-
     this.setState({
       ...this.state,
       comment: {
-        ...this.state.comment,
-        [name]: value
+        ...this.state.comment
       }
     });
   };
 
-  /**
-   * Form submit handler
-   */
   onSubmit(e) {
-    // prevent default form submission
     e.preventDefault();
 
     if (!this.isFormValid()) {
@@ -44,42 +32,11 @@ class CommentForm extends Component {
       return;
     }
 
-    // loading status and clear error
     this.setState({ error: "" });
-
-    // persist the comments on server
-    let { comment } = this.state;
-    fetch("http://localhost:7777", {
-      method: "post",
-      body: JSON.stringify(comment)
-    })
-      .then(res => res.json())
-      .then(res => {
-        if (res.error) {
-          this.setState({ error: res.error });
-        } else {
-          // add time return from api and push comment to parent state
-          comment.time = res.time;
-          this.props.addComment(comment);
-
-          // clear the message box
-          this.setState({
-            comment: { ...comment, message: "" }
-          });
-        }
-      })
-      .catch(err => {
-        this.setState({
-          error: "Something went wrong while submitting form."
-        });
-      });
   }
 
-  /**
-   * Simple validation
-   */
   isFormValid() {
-    return this.state.comment.name !== "" && this.state.comment.message !== "";
+    return this.state.comment.message !== "";
   }
 
   renderError() {
@@ -90,19 +47,8 @@ class CommentForm extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div>
         <form method="post" onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <input
-              onChange={this.handleFieldChange}
-              value={this.state.comment.name}
-              className="form-control"
-              placeholder="Your Name"
-              name="name"
-              type="text"
-            />
-          </div>
-
           <div className="form-group">
             <textarea
               onChange={this.handleFieldChange}
@@ -122,7 +68,7 @@ class CommentForm extends Component {
                         </button>
           </div>
         </form>
-      </React.Fragment>
+      </div>
     );
   }
 }

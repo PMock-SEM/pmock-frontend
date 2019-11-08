@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './videoThumbnail.scss';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 class VideoThumbnail extends Component {
