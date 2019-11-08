@@ -27,17 +27,15 @@ class VideoDetail extends Component {
             <Video videoId={this.props.videoDetail._id}
               videoUrl={this.props.videoDetail.videoUrl}
               videoName={this.props.videoDetail.videoName}
-              createTime={utils.convertTimeStamp(this.props.videoDetail.createdAt)} />
+              createTime={utils.convertTimeStamp(this.props.videoDetail.createdTime)} />
           </div>
           <div className="row">
             <div className="col-4 pt-3 border-right">
               <h3>Comments</h3>
-              <CommentForm addComment={this.props.addFeedback} />
+              {this.props.auth ? <CommentForm /> : "you should login to comment"}
             </div>
             <div className="col-8 pt-3 bg-white">
-              <CommentList
-                comments={this.props.feedbackList}
-              />
+              <CommentList comments={this.props.feedbackList} />
             </div>
           </div>
         </div>
@@ -64,8 +62,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   loadVideoDetail,
   loadFeedbackListByVideoId,
-  loadVideoListByUserId,
-  addFeedback
+  loadVideoListByUserId
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoDetail);
