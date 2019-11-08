@@ -43,7 +43,7 @@ class UserProfile extends Component {
               {
                 this.props.videoList.map(video => {
                   return (
-                    <VideoThumbnail uploader={video.userName} createTime={utils.convertTimeStamp(video.createdTime)} title={video.videoName} videoUrl={video.videoUrl} />
+                    <VideoThumbnail videoId={video._id} uploader={video.userName} createTime={utils.convertTimeStamp(video.createdTime)} title={video.videoName} videoUrl={video.videoUrl} />
                   );
                 })
               }

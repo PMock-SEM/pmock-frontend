@@ -26,7 +26,7 @@ class VideoThumbnail extends Component {
           <img src={this.getThumbnail(this.props.videoUrl)} alt=''></img>
         </div>
         <div className='video-description'>
-          <NavLink to='/videos' className='video-title'>{this.props.title}</NavLink>
+          <NavLink to={`/video_detail/${this.props.videoId}`} className='video-title'>{this.props.title}</NavLink>
           <div className='video-uploader'>{this.props.uploader}</div>
           <div className='video-upload-time'>{this.props.createTime}</div>
         </div>

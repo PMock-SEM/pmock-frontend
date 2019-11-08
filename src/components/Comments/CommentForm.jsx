@@ -1,71 +1,61 @@
 import React, { Component } from "react";
 import './commentForm.scss';
+import Button from "../Button/Button";
+import { addFeedback } from '../../actions/feedbackListAction';
+import { connect } from 'react-redux';
 
 class CommentForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: '',
-      comment: {
-        message: ''
-      }
+      comment: ''
     };
-
-    this.handleFieldChange = this.handleFieldChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
   handleFieldChange = event => {
     this.setState({
       ...this.state,
-      comment: {
-        ...this.state.comment
-      }
+      comment: event.target.value
     });
   };
 
-  onSubmit(e) {
+  onCommentClick = (e) => {
     e.preventDefault();
-
-    if (!this.isFormValid()) {
-      this.setState({ error: "All fields are required." });
-      return;
+    const valid = this.isFormValid();
+    this.setState({ error: valid ? "" : "All fields are required." });
+    if (valid) {
+      const videoId = this.props.videoDetail._id;
+      const coachId = "5db346344c126601f0c1d606";
+      this.props.addFeedback(videoId, coachId, this.state.comment);
     }
-
-    this.setState({ error: "" });
   }
 
   isFormValid() {
-    return this.state.comment.message !== "";
+    return this.state.comment !== "";
   }
 
   renderError() {
-    return this.state.error ? (
+    return this.state.error && (
       <div className="alert alert-danger">{this.state.error}</div>
-    ) : null;
+    );
   }
 
   render() {
     return (
       <div>
-        <form method="post" onSubmit={this.onSubmit}>
+        <form method="post">
           <div className="form-group">
             <textarea
               onChange={this.handleFieldChange}
-              value={this.state.comment.message}
               className="form-control"
               placeholder="Your Comment"
-              name="message"
               rows="5"
             />
           </div>
-
           {this.renderError()}
-
           <div className="form-group">
-            <button className="btn btn-primary">
-              Comment &#10148;
-                        </button>
+            <Button className='comment-btn' text='Comment' onButtonClick={this.onCommentClick} />
           </div>
         </form>
       </div>
@@ -73,4 +63,13 @@ class CommentForm extends Component {
   }
 }
 
-export default CommentForm;
+const mapStateToProps = (state) => {
+  const { feedbackList, auth, videoDetail } = state;
+  return { feedbackList, auth, videoDetail };
+};
+
+const mapDispatchToProps = {
+  addFeedback
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);
