@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './coachProfile.scss';
-import Button from '../../components/Button/Button';
-import VideoThumbnail from '../../components/VideoThumbnail/VideoThumbnail';
 import { connect } from 'react-redux';
 import { loadCoachProfile } from '../../actions/coachProfileAction';
-import utils from '../../utils';
 
 class CoachProfile extends Component {
   componentWillMount() {
