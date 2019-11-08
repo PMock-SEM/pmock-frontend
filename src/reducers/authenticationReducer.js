@@ -1,11 +1,12 @@
 import userActionTypes from '../actionTypes/userActionTypes';
 
-export default function(state = null, action) {
-	console.log(action);
-	switch (action.type) {
-		case userActionTypes.FETCH_USER:
-			return action.payload || false;
-		default: 
-			return state;
-	}
+export default function (state = {}, action) {
+  switch (action.type) {
+    case userActionTypes.FETCH_USER:
+      return {
+        ...action.payload.data
+      };
+    default:
+      return state;
+  }
 }

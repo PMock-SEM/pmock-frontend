@@ -16,7 +16,8 @@ class Header extends Component {
     if (nextProps.auth) {
       this.setState({
         user: {
-          firstName: nextProps.auth.firstName
+          firstName: nextProps.auth.firstName,
+          _id: nextProps.auth._id
         }
       })
     }
@@ -28,7 +29,7 @@ class Header extends Component {
         <div className='left-container'>PMOCK</div>
         {this.state.user.firstName ?
           (<div className='right-container'>
-            <NavLink to='/users' className='nav-link'>
+            <NavLink to={`/users/${this.state.user._id}`} className='nav-link'>
               Welcome {this.state.user.firstName}
             </NavLink>
             <ul className='user-container' role='navigation'>

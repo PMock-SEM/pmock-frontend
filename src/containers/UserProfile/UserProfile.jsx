@@ -3,25 +3,15 @@ import './user_profile.scss';
 import Button from '../../components/Button/Button';
 import VideoThumbnail from '../../components/VideoThumbnail/VideoThumbnail';
 import { connect } from 'react-redux';
+import { loadUserProfile } from '../../actions/userProfileAction';
+import { loadVideoListByUserId } from '../../actions/videoListAction';
+import utils from '../../utils';
 
 class UserProfile extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.auth) {
-      this.setState({
-        firstName: nextProps.auth.firstName,
-        lastName: nextProps.auth.lastName,
-        email: nextProps.auth.email,
-        avatarLink: nextProps.auth.avatarLink
-      });
-    }
+  componentWillMount() {
+    const id = this.props.match.params.id;
+    this.props.loadUserProfile(id);
+    this.props.loadVideoListByUserId(id);
   }
 
   onUploadClick = (e) => {
@@ -34,12 +24,12 @@ class UserProfile extends Component {
       <div className='user-profile'>
         <div className='user-info'>
           <div className='user-avatar'>
-            <img src={this.state.avatarLink} style={{ width: 75, height: 75, position: 'absolute', top: this.props.top, left: this.props.left }}></img>
+            <img className='user-avatar-image' alt='aaa' src={this.props.userProfile.avatarLink} ></img>
           </div>
           <div className='user-right'>
-            <div className='user-name'>{this.state.firstName}</div>
-            <div className='user-description'>{this.state.lastName}</div>
-            <div className='user-description'>{this.state.email}</div>
+            <div className='user-name'>{this.props.userProfile.firstName}</div>
+            <div className='user-description'>{this.props.userProfile.lastName}</div>
+            <div className='user-description'>{this.props.userProfile.email}</div>
           </div>
         </div>
         <div className='user-main'>
@@ -50,15 +40,13 @@ class UserProfile extends Component {
           <div className='user-main-right'>
             <Button text='Upload a presentation video' onButtonClick={this.onUploadClick} to='/upload_video' />
             <div className='video-thumbnails'>
-              <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video' videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
-              <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video' videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
-              <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video' videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
-              <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video' videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
-              <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video' videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
-              <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video' videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
-              <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video' videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
-              <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video' videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
-              <VideoThumbnail uploader='Niro' createTime='2019-10-10' title='My first presentation video' videoUrl='https://storage.cloud.google.com/pmock/y2mate.com%20-%20how_to_do_a_presentation_5_steps_to_a_killer_opener_dEDcc0aCjaA_360p.mp4?authuser=2&folder&organizationId'></VideoThumbnail>
+              {
+                this.props.videoList.map(video => {
+                  return (
+                    <VideoThumbnail uploader={video.userName} createTime={utils.convertTimeStamp(video.createdTime)} title={video.videoName} videoUrl={video.videoUrl} />
+                  );
+                })
+              }
             </div>
           </div>
         </div>
@@ -67,8 +55,14 @@ class UserProfile extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  const { userProfile, videoList } = state;
+  return { userProfile, videoList };
+};
 
-function mapStateToProps({ auth }) {
-  return { auth };
-}
-export default connect(mapStateToProps, null)(UserProfile);
+const mapDispatchToProps = {
+  loadUserProfile,
+  loadVideoListByUserId
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

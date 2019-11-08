@@ -1,4 +1,4 @@
-.user-profile{
+.coach-profile{
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -6,7 +6,7 @@
   
 }
 
-.user-info{
+.coach-info{
   width: 100%;
   background-color: aliceblue;
   padding: 20px;
@@ -16,49 +16,49 @@
   font-family: Lato;
 }
 
-.user-avatar{
+.coach-avatar{
   width: 80px;
   height: 80px;
   background-color: #2193b0;
   border-radius: 5px;
 }
 
-.user-right{
+.coach-right{
   margin-left: 20px;
   display: flex;
   flex-direction: column;
-  .user-name{
+  .coach-name{
     font-weight: bold;
     font-size: 20px;
   }
-  .user-description{
+  .coach-description{
     margin-top: 10px;
   }
 }
 
-.user-main{
+.coach-main{
   display: flex;
   flex-direction: row;
   margin-top: 20px;
 
-  .user-main-left{
+  .coach-main-left{
     width: 15%;
     background-color: #2193b0;
     color: #ffffff;
     font-weight: bold;
     padding: 15px;
 
-    .user-main-tab{
+    .coach-main-tab{
       margin-top: 10px;
       cursor: pointer;
     }
 
-    .user-main-tab:hover{
+    .coach-main-tab:hover{
       color: blue;
     }
   }
 
-  .user-main-right{
+  .coach-main-right{
     width: 85%;
     background-color: aliceblue;
     padding: 15px;
@@ -83,7 +83,7 @@
   margin-top: 20px;
 }
 
-.user-avatar-image{
+.coach-avatar-image{
   width: 80px;
   height: 80px;
   position: absolute;
