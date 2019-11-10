@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import './header.scss';
 import { connect } from 'react-redux';
 
@@ -8,53 +8,60 @@ class Header extends Component {
     super(props);
 
     this.state = {
-      user: {}
+
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.auth) {
-      this.setState({
-        user: {
-          firstName: nextProps.auth.firstName,
-          _id: nextProps.auth._id
-        }
-      })
-    }
+renderContent() {
+  switch (this.props.auth) {
+    case null:
+      return;
+
+    case false:
+      return (
+      <div className='right-container'>
+        <ul className='user-container' role='navigation'>
+          <li id='login'>
+            <NavLink to='/login' className='nav-link'>Login</NavLink>
+          </li>
+          <li id='register'>
+            <NavLink to='/register' className='nav-link'>Register</NavLink>
+          </li>
+        </ul>
+        
+      </div>
+
+      );
+
+    default:
+      return (
+      <div className='right-container'>
+
+        <NavLink to='/users' className='nav-link'>
+          Welcome {this.props.auth.firstName}
+        </NavLink>
+        <ul className='user-container' role='navigation'>
+          <li id='logout'>
+            <a href='/users/auth/linkedin/logout' className='redirectlink'>Logout</a>
+          </li>
+        </ul>
+      </div>
+      );
   }
+}
+
 
   render() {
     return (
       <div className='header'>
         <div className='left-container'>PMOCK</div>
-        {this.state.user.firstName ?
-          (<div className='right-container'>
-            <NavLink to={`/users/${this.state.user._id}`} className='nav-link'>
-              Welcome {this.state.user.firstName}
-            </NavLink>
-            <ul className='user-container' role='navigation'>
-              <li id='logout'>
-                <a href='/users/auth/linkedin/logout' className='redirectlink'>Logout</a>
-              </li>
-            </ul>
-          </div>) :
-          (<div className='right-container'>
-            <ul className='user-container' role='navigation'>
-              <li id='login'>
-                <NavLink to='/login' className='nav-link'>Login</NavLink>
-              </li>
-              <li id='register'>
-                <NavLink to='/register' className='nav-link'>Register</NavLink>
-              </li>
-            </ul>
-          </div>
-          )}
+          {this.renderContent()}
       </div>
     );
   }
 }
 
-function mapStateToProps({ auth }) {
+function mapStateToProps({auth}) {
   return { auth };
 }
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps) (Header);
