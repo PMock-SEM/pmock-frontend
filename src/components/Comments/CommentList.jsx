@@ -8,7 +8,7 @@ class CommentList extends Component {
       <div className="commentList">
         {
           comments.length === 0 &&
-          (<div className="alert text-center alert-info">Be the first to comment</div>)
+          (<div className="alert text-center alert-info">Be the first to comment!</div>)
         }
         {comments.map((comment, index) => (
           <Comment key={index} content={comment.content} coachId={comment.coachId} />

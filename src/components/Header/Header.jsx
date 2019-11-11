@@ -38,7 +38,7 @@ renderContent() {
       <div className='right-container'>
 
         <NavLink to='/users' className='nav-link'>
-          Welcome {this.props.auth.firstName}
+          Welcome {this.props.auth.firstName || this.props.auth.coachFirstName}
         </NavLink>
         <ul className='user-container' role='navigation'>
           <li id='logout'>

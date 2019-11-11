@@ -36,9 +36,9 @@ class VideoDetail extends Component {
             <div className="feedback-form">
               <div className="feedback-form-header">
                 <h3 className="feedback-form-title">Feedbacks</h3>
-                <Button className='invite-btn' text='Invite' />
+                {this.props.auth.type === "User" ? <Button className='invite-btn' text='Invite' /> : ''}
               </div>
-              {this.props.auth ? <CommentForm /> : "you should login to comment"}
+              {this.props.auth.type === "Coach" ? <CommentForm /> : "you should be a Coach to comment"}
             </div>
             <div className="col-8 pt-3 bg-white">
               <CommentList comments={this.props.feedbackList} />

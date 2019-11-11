@@ -26,8 +26,9 @@ class CommentForm extends Component {
     this.setState({ error: valid ? "" : "All fields are required." });
     if (valid) {
       const videoId = this.props.videoDetail._id;
-      const coachId = "5db346344c126601f0c1d606";
+      const coachId = this.props.auth._id;
       this.props.addFeedback(videoId, coachId, this.state.comment);
+      this.state.comment = "";
     }
   }
 
@@ -44,7 +45,7 @@ class CommentForm extends Component {
   render() {
     return (
       <div className='feedback-form'>
-        <textarea className='feedback-text-area' onChange={this.handleFieldChange} placeholder="Add your feedback here...">
+        <textarea className='feedback-text-area' onChange={this.handleFieldChange} placeholder="Add your feedback here..." value={this.state.comment}>
         </textarea>
         <Button className='add-feedback-btn' text='Add feedback' onButtonClick={this.onCommentClick} ></Button>
         {this.renderError()}
