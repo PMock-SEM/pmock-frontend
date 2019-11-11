@@ -7,6 +7,14 @@ const utils = {
     if (dd < 10) dd = '0' + dd;
     if (mm < 10) mm = '0' + mm;
     return dd + '-' + mm + '-' + yyyy;
+  },
+
+  convertTimeStampToHour(timestamp) {
+    const date = new Date(timestamp);
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    return `${hour}:${minutes}:${seconds}`;
   }
 }
 

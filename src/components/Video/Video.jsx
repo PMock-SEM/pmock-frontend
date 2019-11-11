@@ -18,7 +18,7 @@ class Video extends Component {
     return (
       <div className='video'>
         <h1 className='video-name'>{this.props.videoName}</h1>
-        <p className='video-description'>{`videos | ${this.props.createTime}`}</p>
+        <p className='video-description'>{`videos | ${this.props.createTime} | ${this.props.createHour}`}</p>
         <Player id={this.props.videoId} sources={sources} />
       </div>
 

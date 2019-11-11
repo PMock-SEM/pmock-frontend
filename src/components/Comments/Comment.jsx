@@ -1,16 +1,34 @@
 import React, { Component } from "react";
 import utils from '../../utils';
+import './comment.scss';
+import axios from "axios";
+import config from '../../config';
 
 class Comment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      coachName: ''
+    }
+  }
+
+  componentWillMount() {
+    axios.get(`${config.api}/coaches/${this.props.coachId}`).then((response) => {
+      this.setState({ coachName: response.data.data.coachFirstName + ' ' + response.data.data.coachLastName });
+    })
+  }
+
   render() {
-    const { content, createdAt } = this.props.comment;
     return (
-      <div className="media mb-3">
-        <img className="mr-3 bg-light rounded" width="48" height="48" alt="" />
-        <div className="media-body p-2 shadow-sm rounded bg-light border">
-          <small className="float-right text-muted">{utils.convertTimeStamp(createdAt)}</small>
-          {content}
+      <div className='feedback-item'>
+        <div className='feedback-coach-info'>
+          <div className='feedback-coach-avatar'></div>
+          <div className='feedback-coach-detail'>
+            <div className='feedback-coach-name'>{this.state.coachName}</div>
+            <div className='feedback-coach-description'>Qualified by PMock platform</div>
+          </div>
         </div>
+        <div className='feedback-content'>{this.props.content}</div>
       </div>
     );
   }

@@ -8,7 +8,7 @@ export default function feedbackListReducer(state = initialState, action) {
       return action.payload.data || false;
 
     case feedbackListActionTypes.ADD_FEEDBACK:
-      return [...initialState, action.payload.data];
+      return [...state, action.payload.data];
 
     default: return state;
   };

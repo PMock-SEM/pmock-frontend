@@ -3,6 +3,7 @@
   flex: 30%;
   flex-direction: column;
   flex-wrap: wrap;
+  font-family: Lato;
 }
 
 .video-detail {
@@ -11,7 +12,80 @@
 }
 
 .main {
-  //display: flex;
-  flex: 70%;
+  display: flex;
+  width: 70%;
   flex-direction: column;
+  padding: 15px;
+  font-family: Lato;
+}
+
+.side{
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.feedbacks{
+  width: 94%;
+  margin-top: 20px;
+
+}
+
+.feedback-form{
+
+}
+
+.feedback-form-title{
+  font-size: 20px;
+
+}
+
+.feedback-form-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.btn{
+  height: 35px;
+}
+
+.user-thumbnail{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 17px;
+  padding: 5px;
+}
+
+.user-avatar-image .user-avatar {
+  border-radius: 3px;
+  width: 40px;
+  height: 40px;
+}
+
+.user-name{
+  font-weight: bold;
+  margin-left: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-decoration: none;
+  color: #000000;
+}
+
+.user-name:hover{
+  color: cornflowerblue;
+}
+
+
+.other-videos{
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 5px;
 }

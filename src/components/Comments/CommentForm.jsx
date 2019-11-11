@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import './commentForm.scss';
-import Button from "../Button/Button";
 import { addFeedback } from '../../actions/feedbackListAction';
 import { connect } from 'react-redux';
+import Button from "../Button/Button";
 
 class CommentForm extends Component {
   constructor(props) {
@@ -43,21 +43,11 @@ class CommentForm extends Component {
 
   render() {
     return (
-      <div>
-        <form method="post">
-          <div className="form-group">
-            <textarea
-              onChange={this.handleFieldChange}
-              className="form-control"
-              placeholder="Your Comment"
-              rows="5"
-            />
-          </div>
-          {this.renderError()}
-          <div className="form-group">
-            <Button className='comment-btn' text='Comment' onButtonClick={this.onCommentClick} />
-          </div>
-        </form>
+      <div className='feedback-form'>
+        <textarea className='feedback-text-area' onChange={this.handleFieldChange} placeholder="Add your feedback here...">
+        </textarea>
+        <Button className='add-feedback-btn' text='Add feedback' onButtonClick={this.onCommentClick} ></Button>
+        {this.renderError()}
       </div>
     );
   }
