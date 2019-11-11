@@ -1,0 +1,22 @@
+.feedback-thumbnail{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 3px solid #ffffff;
+  padding: 15px 15px 40px 15px;
+}
+
+.video-name{
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-decoration: none;
+  color: #000000;
+}
+
+.video-name:hover{
+  color: cornflowerblue;
+}

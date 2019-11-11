@@ -12,4 +12,14 @@ export function loadCoachProfile(coachId) {
   }
 }
 
+export function loadCoachFeedbacks(coachId) {
+  return async (dispatch) => {
+    const response = await axios.get(`${config.api}/coaches/${coachId}/feedbacks`);
+    dispatch({
+      type: coachProfileActionTypes.COACH_FEEDBACKS_LOADED,
+      payload: response.data
+    });
+  }
+}
+
 
