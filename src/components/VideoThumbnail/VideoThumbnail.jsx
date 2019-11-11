@@ -9,7 +9,7 @@ class VideoThumbnail extends Component {
     video.src = url;
     video.width = 270;
     video.height = 150;
-    video.currentTime = 10;
+    video.currentTime = 1000;
     let canvas = document.createElement('canvas');
     canvas.width = 270;
     canvas.height = 150;

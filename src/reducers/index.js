@@ -6,6 +6,7 @@ import videoListReducer from './videoListReducer';
 import coachProfileReducer from './coachProfileReducer';
 import videoDetailReducer from './videoDetailReducer';
 import feedbackListReducer from './feedbackListReducer';
+import coachListReducer from './coachListReducer';
 
 const allReducers = {
   user: userReducer,
@@ -14,7 +15,8 @@ const allReducers = {
   feedbackList: feedbackListReducer,
   videoDetail: videoDetailReducer,
   auth: authenticationReducer,
-  coachProfile: coachProfileReducer
+  coachProfile: coachProfileReducer,
+  coachList: coachListReducer
 };
 
 const rootReducer = combineReducers(allReducers);
