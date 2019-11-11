@@ -3,6 +3,8 @@ import './uploadVideo.scss';
 import Dropzone from 'react-dropzone';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
+import { uploadVideoAction } from '../../actions/videoUploadAction';
+import { connect } from 'react-redux';
 
 class UploadVideo extends Component {
   constructor(props) {
@@ -45,7 +47,7 @@ class UploadVideo extends Component {
   };
 
   onSubmitClick = (e) => {
-    e.preventDefault();
+    this.props.uploadVideoAction(this.state.video.title,this.state.video.file,this.props.auth._id);  
   };
 
   render() {
@@ -72,4 +74,14 @@ class UploadVideo extends Component {
   }
 }
 
-export default UploadVideo;
+
+const mapStateToProps = (state) => {
+  const { auth} = state;
+  return { auth };
+};
+
+const mapDispatchToProps = {
+  uploadVideoAction
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UploadVideo);
