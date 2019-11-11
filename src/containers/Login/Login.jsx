@@ -17,6 +17,7 @@ class Login extends Component {
       }
     };
   }
+
   componentWillReceiveProps(nextProps) {
     const code = queryString.parse(nextProps.location.search.code);
     if (code) {
@@ -24,11 +25,19 @@ class Login extends Component {
     }
   }
 
-  onLinkedinClick = (e) => {
+componentDidMount () {
+    document.getElementById("defaultOpen").click();
+}
+
+  onLinkedinUserClick = (e) => {
     window.localStorage.preventHref = window.location.href;
     window.location.href = `/users/auth/linkedin`;
   }
 
+onLinkedinCoachClick = (e) => {
+    window.localStorage.preventHref = window.location.href;
+    window.location.href = `/coaches/auth/linkedin`;
+  }
   onLoginClick = (e) => {
     e.preventDefault();
     this.props.login(this.state.user);
@@ -52,33 +61,103 @@ class Login extends Component {
     });
   }
 
+selectUser = (e) => {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById("User").style.display = "block";
+  e.currentTarget.className += " active";
+}
+
+selectCoach = (e) => {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById("Coach").style.display = "block";
+  e.currentTarget.className += " active";
+}
 
   render() {
     return (
+
       <div className='login'>
         <div className='login-popup'>
           <div className='login-left'>
+            <div class="tab">
+              <button class="tablinks" onClick={this.selectUser} id="defaultOpen">
+                <div class="login-type">
+                  User
+                </div>
+              </button>
+              <button class="tablinks" onClick={this.selectCoach}>
+                <div class="login-type">
+                  Coach
+                </div>
+              </button>
+            </div>
           </div>
           <div className='login-right'>
-            <div className='login-title'>Login to your PMock account</div>
-            <Input placeholder="Email" onInputChange={this.onEmailChange} />
-            <Input placeholder='Password' type='password' onInputChange={this.onPasswordChange} />
-            <p className='forget-password'>Forgot your password?</p>
 
-            <div style={{ display: 'inline' }}>
+            <div id="User" class="tabcontent">
+              <div className='login-title'>Login to your PMock User account</div>
+              <Input placeholder="Email" onInputChange={this.onEmailChange} />
+              <Input placeholder='Password' type='password' onInputChange={this.onPasswordChange} />
+              <p className='forget-password'>Forgot your password?</p>
 
-              <Button className='login-btn' text='Login' onButtonClick={this.onLoginClick} />
-              <img className='linkedin-login-btn' src='https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png' alt='aaa' onClick={this.onLinkedinClick}></img>
+              <div style={{ display: 'inline' }}>
+
+                <Button className='login-btn' text='Login' onButtonClick={this.onLoginClick} />
+                <img className='linkedin-login-btn' src='https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png' alt='aaa' onClick={this.onLinkedinUserClick}></img>
+              </div>
             </div>
-            {/* <div>
-              <a href='/video'>Upload a video</a>
-            </div> */}
+
+            <div id="Coach" class="tabcontent">
+              <div className='login-title'>Login to your PMock Coach account</div>
+              <Input placeholder="Email" onInputChange={this.onEmailChange} />
+              <Input placeholder='Password' type='password' onInputChange={this.onPasswordChange} />
+              <p className='forget-password'>Forgot your password?</p>
+
+              <div style={{ display: 'inline' }}>
+
+                <Button className='login-btn' text='Login' onButtonClick={this.onLoginClick} />
+                <img className='linkedin-login-btn' src='https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png' alt='aaa' onClick={this.onLinkedinCoachClick}></img>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
+
     )
   }
 }
+
 
 const mapStateToProps = (state) => {
   const { auth } = state;
