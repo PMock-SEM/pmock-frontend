@@ -9,9 +9,12 @@ import { loadVideoDetail } from '../../actions/videoDetailAction';
 import { loadVideoListByUserId } from '../../actions/videoListAction';
 import { loadFeedbackListByVideoId } from '../../actions/feedbackListAction';
 import { loadUserProfile } from '../../actions/userProfileAction';
+import { loadCoachList } from '../../actions/coachListAction';
 import Button from "../../components/Button/Button";
 import utils from '../../utils';
 import { NavLink } from 'react-router-dom';
+import Popup from "reactjs-popup";
+import CoachList from '../../components/CoachList/CoachList';
 
 class VideoDetail extends Component {
   componentWillMount() {
@@ -21,6 +24,11 @@ class VideoDetail extends Component {
       this.props.loadUserProfile(this.props.videoDetail.userId);
     });
     this.props.loadFeedbackListByVideoId(videoId);
+    this.props.loadCoachList();
+  }
+
+  onInviteClick() {
+
   }
 
   render() {
@@ -36,13 +44,18 @@ class VideoDetail extends Component {
             <div className="feedback-form">
               <div className="feedback-form-header">
                 <h3 className="feedback-form-title">Feedbacks</h3>
-                {this.props.auth.type === "User" ? <Button className='invite-btn' text='Invite' /> : ''}
+                {/* {this.props.auth.type === "User" && <Button className='invite-btn' text='Invite' />} */}
+                <Popup
+                  trigger={<button className="invite-btn"> Invite </button>}
+                  modal
+                  closeOnDocumentClick
+                >
+                  <CoachList coaches={this.props.coachList} />
+                </Popup>
               </div>
               {this.props.auth.type === "Coach" ? <CommentForm /> : "you should be a Coach to comment"}
             </div>
-            <div className="col-8 pt-3 bg-white">
-              <CommentList comments={this.props.feedbackList} />
-            </div>
+            <CommentList comments={this.props.feedbackList} />
           </div>
         </div>
         <div className='side'>
@@ -53,6 +66,7 @@ class VideoDetail extends Component {
             <NavLink className='user-name' to={`/users/${this.props.userProfile._id}`}>
               <div className='user-first-name'>{this.props.userProfile.firstName}</div>
               <div className='user-last-name'>{this.props.userProfile.lastName}</div>
+              <div className='user-email'>{this.props.userProfile.email}</div>
             </NavLink>
           </div>
           <div className='other-videos'>Other videos</div>
@@ -71,15 +85,16 @@ class VideoDetail extends Component {
 
 
 const mapStateToProps = (state) => {
-  const { videoDetail, feedbackList, videoList, auth, userProfile } = state;
-  return { videoDetail, feedbackList, videoList, auth, userProfile };
+  const { videoDetail, feedbackList, videoList, auth, userProfile, coachList } = state;
+  return { videoDetail, feedbackList, videoList, auth, userProfile, coachList };
 };
 
 const mapDispatchToProps = {
   loadVideoDetail,
   loadFeedbackListByVideoId,
   loadVideoListByUserId,
-  loadUserProfile
+  loadUserProfile,
+  loadCoachList
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoDetail);

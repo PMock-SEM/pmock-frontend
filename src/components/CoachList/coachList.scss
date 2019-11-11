@@ -1,0 +1,59 @@
+.coach-list{
+  display: flex;
+  flex-direction: column;
+  font-family: Lato;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.coach-list-header{
+  font-weight: bold;
+  font-size: 18px;
+  border-bottom: 1px solid #c9c9c9;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+
+}
+
+.coach-thumbnail{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+
+}
+
+.coach-avatar{
+}
+
+.coach-information{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.coach-name{
+  font-weight: bold;
+
+}
+
+.coach-description{
+  margin-top: 10px;
+
+}
+
+.coach-items{
+  display: flex;
+  flex-direction: column;
+}
+
+.coach-invite{
+  justify-self: flex-end;
+  margin-left: 200px;
+}
+
+.btn{
+  height: 30px;
+  width: 100px;
+}
