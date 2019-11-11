@@ -11,6 +11,8 @@ export function uploadVideoAction(videoName, videoFile, userId) {
     data.append('userId', userId);
 
     const response = await axios.post(`${config.api}/videos/upload`, data);
+    window.location.href = `/video_detail/${response.data.data._id}`;
+
     dispatch({
       type: videoUploadActionTypes.UPLOAD_VIDEO,
       payload: response.data
