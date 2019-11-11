@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import utils from '../../utils';
+import { NavLink } from 'react-router-dom';
 import './comment.scss';
 import axios from "axios";
 import config from '../../config';
@@ -8,13 +9,17 @@ class Comment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      coachName: ''
+      coachName: '',
+      coachAvatar: ''
     }
   }
 
   componentWillMount() {
     axios.get(`${config.api}/coaches/${this.props.coachId}`).then((response) => {
-      this.setState({ coachName: response.data.data.coachFirstName + ' ' + response.data.data.coachLastName });
+      this.setState({
+        coachName: response.data.data.coachFirstName + ' ' + response.data.data.coachLastName,
+        coachAvatar: response.data.data.avatarLink
+      });
     })
   }
 
@@ -22,9 +27,9 @@ class Comment extends Component {
     return (
       <div className='feedback-item'>
         <div className='feedback-coach-info'>
-          <div className='feedback-coach-avatar'></div>
+          <img className='feedback-coach-avatar' alt='aaa' src={this.state.coachAvatar} ></img>
           <div className='feedback-coach-detail'>
-            <div className='feedback-coach-name'>{this.state.coachName}</div>
+            <NavLink className='feedback-coach-name' to={`/coaches/${this.props.coachId}`}>{this.state.coachName}</NavLink>
             <div className='feedback-coach-description'>Qualified by PMock platform</div>
           </div>
         </div>
