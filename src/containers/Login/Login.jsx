@@ -65,13 +65,13 @@ selectUser = (e) => {
   // Declare all variables
   var i, tabcontent, tablinks;
 
-  // Get all elements with class="tabcontent" and hide them
+  // Get all elements with className="tabcontent" and hide them
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
 
-  // Get all elements with class="tablinks" and remove the class "active"
+  // Get all elements with className="tablinks" and remove the class "active"
   tablinks = document.getElementsByClassName("tablinks");
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
@@ -86,13 +86,13 @@ selectCoach = (e) => {
   // Declare all variables
   var i, tabcontent, tablinks;
 
-  // Get all elements with class="tabcontent" and hide them
+  // Get all elements with className="tabcontent" and hide them
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
 
-  // Get all elements with class="tablinks" and remove the class "active"
+  // Get all elements with className="tablinks" and remove the class "active"
   tablinks = document.getElementsByClassName("tablinks");
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
@@ -109,14 +109,14 @@ selectCoach = (e) => {
       <div className='login'>
         <div className='login-popup'>
           <div className='login-left'>
-            <div class="tab">
-              <button class="tablinks" onClick={this.selectUser} id="defaultOpen">
-                <div class="login-type">
+            <div className="tab">
+              <button className="tablinks" onClick={this.selectUser} id="defaultOpen">
+                <div className="login-type">
                   User
                 </div>
               </button>
-              <button class="tablinks" onClick={this.selectCoach}>
-                <div class="login-type">
+              <button className="tablinks" onClick={this.selectCoach}>
+                <div className="login-type">
                   Coach
                 </div>
               </button>
@@ -124,7 +124,7 @@ selectCoach = (e) => {
           </div>
           <div className='login-right'>
 
-            <div id="User" class="tabcontent">
+            <div id="User" className="tabcontent">
               <div className='login-title'>Login to your PMock User account</div>
               <Input placeholder="Email" onInputChange={this.onEmailChange} />
               <Input placeholder='Password' type='password' onInputChange={this.onPasswordChange} />
@@ -137,7 +137,7 @@ selectCoach = (e) => {
               </div>
             </div>
 
-            <div id="Coach" class="tabcontent">
+            <div id="Coach" className="tabcontent">
               <div className='login-title'>Login to your PMock Coach account</div>
               <Input placeholder="Email" onInputChange={this.onEmailChange} />
               <Input placeholder='Password' type='password' onInputChange={this.onPasswordChange} />

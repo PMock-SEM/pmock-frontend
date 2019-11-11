@@ -51,7 +51,7 @@ renderContent() {
 }
 
 
-  render() {
+render() {
     return (
       <div className='header'>
         <div className='left-container'>PMOCK</div>

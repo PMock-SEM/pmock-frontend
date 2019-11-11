@@ -47,7 +47,7 @@ export const fetchUser = () => {
   return function (dispatch) {
     axios
       .get('/users/api/current_user')
-      .then(res => dispatch({ type: userActionTypes.FETCH_USER, payload: res.data }));
+      .then(res => dispatch({ type: userActionTypes.FETCH_USER, payload: res }));
   };
 };
 
