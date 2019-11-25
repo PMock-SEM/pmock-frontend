@@ -23,7 +23,12 @@ class VideoThumbnail extends Component {
     return (
       <div className='video-thumbnail'>
         <div className='video-img'>
-          <img src={this.getThumbnail(this.props.videoUrl)} alt=''></img>
+        <video width="320" height="200" controls>
+            <source
+              src={this.props.videoUrl}
+            />
+            Your browser does not support HTML5 video.
+          </video>
         </div>
         <div className='video-description'>
           <NavLink to={`/video_detail/${this.props.videoId}`} className='video-title'>{this.props.title}</NavLink>
